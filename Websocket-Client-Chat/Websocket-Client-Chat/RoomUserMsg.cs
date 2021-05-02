@@ -12,6 +12,12 @@ namespace Websocket_Client_Chat
         public User user { get; set; }
         public ChatRoom room { get; set; }
         public string message { get; set; }
-        
+        public RoomUserMsg()
+        {
+            user = new User();
+            room = new ChatRoom();
+            message = "";
+
+        }
     }
 }
