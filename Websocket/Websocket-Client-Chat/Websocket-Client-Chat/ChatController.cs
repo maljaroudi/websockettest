@@ -25,6 +25,7 @@ namespace Websocket_Client_Chat
             roomUserMsg.user = new User();
             roomUserMsg.room = new ChatRoom();
             roomUserMsg.user.Username = name;
+            
             // Connects to the server
             ws = new WebSocket("ws://127.0.0.1:8001/chat");
             ws.OnMessage += (sender, e) => { if (MessageReceived != null) MessageReceived(e.Data); };
@@ -35,7 +36,7 @@ namespace Websocket_Client_Chat
         // Handles when a new message is entered by the user
         public bool MessageEntered(string message)
         {
-
+            roomUserMsg.message = message;
             string jsoned = JsonSerializer.Serialize(roomUserMsg);
             
             // Send the message to the server if connection is alive

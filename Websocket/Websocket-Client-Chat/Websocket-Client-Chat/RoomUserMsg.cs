@@ -19,5 +19,9 @@ namespace Websocket_Client_Chat
             message = "";
 
         }
+        public override string ToString()
+        {
+            return $"{user.Username}: {message}";
+        }
     }
 }

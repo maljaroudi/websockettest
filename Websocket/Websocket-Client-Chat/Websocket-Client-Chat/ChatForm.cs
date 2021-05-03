@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Text.Json;
 namespace Websocket_Client_Chat
 {
     public partial class ChatForm : Form
@@ -40,9 +40,10 @@ namespace Websocket_Client_Chat
 
         public bool MessageReceived(string message)
         {
+            RoomUserMsg tess = JsonSerializer.Deserialize<RoomUserMsg>(message);
             // Add message to messageListBox and scroll to bottom
             // Invoke is used to make sure that this is done in the GUI thread
-            Invoke(new Action(() => messageListBox.TopIndex = messageListBox.Items.Add(message)));
+            Invoke(new Action(() => messageListBox.TopIndex = messageListBox.Items.Add(tess)));
 
             return true;
         }
